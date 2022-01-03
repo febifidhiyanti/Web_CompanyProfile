@@ -1,0 +1,226 @@
+<!-- <?php
+
+require_once("config.php");
+
+if(isset($_POST['register'])){
+
+    // filter data yang diinputkan
+    $nama = filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING);
+    // enkripsi password
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+
+    // menyiapkan query
+    $sql = "INSERT INTO users (nama, email, password) 
+            VALUES (:nama, :email, :password)";
+    $stmt = $db->prepare($sql);
+
+    // bind parameter ke query
+    $params = array(
+        ":nama" => $nama,
+        ":password" => $password,
+        ":email" => $email
+    );
+
+    // eksekusi query untuk menyimpan ke database
+    $saved = $stmt->execute($params);
+
+    // jika query simpan berhasil, maka user sudah terdaftar
+    // maka alihkan ke halaman login
+    if($saved) header("Location: login.php");
+}
+
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Zunder Zifflin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+        $(".form").submit(function(){
+        var nama = $("#nama").val().length;
+        var alamat = $("#alamat").val().length;
+        var jenis = $("#jenis").val().length;
+        var kota = $("#kota").val().length;
+        var yes = $("#yes").val();
+          if(nama==0){
+            $(".pesan-nama").css('display','block');
+            return false;
+          }
+          else if(alamat==0){
+            $(".pesan-alamat").css('display','block');
+            return false;
+          }
+          else if(kota==0){
+            $(".pesan-kota").css('display','block');
+            return false;
+          }
+          else if(jenis==0){
+            $(".pesan-jenis").css('display','block');
+            return false;
+          }    
+          else if(yes==0){
+            $(".pesan-yes").css('display','block');
+            return false;
+          }          
+        });
+      });
+    </script>
+</head>
+
+<body>
+
+  <div class="container mt-5 mb-3">
+    <div class="row mt-5">
+        <div class="col-md-12 mt-5">
+
+        <h6>&larr; <a href="index.html">Home</a></h6>
+
+        <h4>Bergabunglah bersama ribuan orang lainnya...</h4>
+        <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
+
+        <form class="form" method="post">
+          <label for="Nama">Nama</label>
+          <input type="text" name="" class="form-control" id="nama">
+          <span class="pesan-nama" style="display: none;color: red;">Nama Harus Diisi !</span>
+          
+          <label for="Alamat">Alamat</label>
+          <input id="alamat" class="form-control">
+          <span class="pesan-alamat" style="display: none;color: red;">Alamat Harus Diisi !</span>
+
+          <label for="Kota">Kota</label>
+          <input id="kota" class="form-control">
+          <span class="pesan-kota" style="display: none;color: red;">Kota Harus Diisi !</span>
+          
+          <label for="Jenis">Jenis Kelamin</label>
+          <select id="jenis" class="form-control">
+            <option></option>
+            <option value="laki-laki">Laki-laki</option>
+            <option value="perempuan">Perempuan</option>
+          </select>
+          <span class="pesan-jenis" style="display: none;color: red;">Jenis Kelamin Harus Diisi !</span>
+
+          <input type='checkbox' id="yes" /> <a href="">Agreement to company terms and services</a>
+          <span class="pesan-yes" style="display: none;color: red;">Aggrement to company terms harus disetujui</span>
+          
+          <div class="form-group mt-2 col-lg-12">
+            <input type="submit" name="" class="btn btn-success btn-block" value="simpan">
+          </div>
+        </form>
+            
+        </div>
+    </div>
+</div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html"><span>Zunder</span>Zifflin</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0 mb-3">
+        <ul>
+	  
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3>Zunder Zifflin</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Company Profile</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact Us</a></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Zunder Zifflin</span></strong>. All Rights Reserved
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

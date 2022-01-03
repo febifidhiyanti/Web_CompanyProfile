@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Zunder Zifflin</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+        $(".form").submit(function(){
+        var email = $("#email").val().length;
+        var password = $("#password").val().length;
+          if(email==0){
+            $(".pesan-email").css('display','block');
+            return false;
+          }
+          else if(password==0){
+            $(".pesan-password").css('display','block');
+            return false;
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+
+  <div class="container mt-5 mb-3">
+    <div class="row mt-5">
+      <div class="col-md-12 mt-5">
+
+        <p>&larr; <a href="index.php">Home</a>
+
+        <h4>Masuk ke Zunder Zifflin</h4>
+        <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+          
+        <h2>Login</h2>
+        <form class="form" method="post">
+          <label for="Email">Email</label>
+          <input type="email" name="" class="form-control" id="email">
+          <span class="pesan-email" style="display: none;color: red;">Email Harus Diisi !</span>
+          
+          <label for="Password">Password</label>
+          <input type="password" id="password" class="form-control">
+          <span class="pesan-password" style="display: none;color: red;">Password Harus Diisi !</span>
+
+          <div class="form-group mt-2 col-lg-12">
+            <input type="submit" name="" class="btn btn-success btn-block" value="simpan">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
